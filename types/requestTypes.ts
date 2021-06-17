@@ -26,4 +26,4 @@ export interface JsonRequest<T> extends NextApiRequest {
  */
 export const isError = (
   obj: ErrorType | object | undefined
-): obj is ErrorType => !!(obj as ErrorType);
+): obj is ErrorType => !!(obj as ErrorType)?.error;

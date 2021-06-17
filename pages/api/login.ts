@@ -4,7 +4,7 @@ import type { NextApiResponse } from "next";
 import { serialize } from "cookie";
 
 export const password =
-  "2795ebd37cb3d964e5ae4dbe41e78e5b402a338a5d2d0bcd9634d60572c65b76c0c525231dfcee6f5a08ad1dfc6230b96b2082cd077f066562156302c1d99363";
+  "62a43b7ff9f25a70c6ebe8565ec103831178de13f3786f956dea195f272ebd210abdf2c82d6a4dc81afac06fc8a628bc0d9a143482619c7b6827d739ae2e87a6";
 export const accessToken =
   "BQJPX4Y11CIacwFY1mTKa0tT6RJ8Flyo2SZxStYTeIdB8gB4PVwmsDUYzhjplp6oRYrQ82l5rzzgT5cIuIeDGl7NsSQs7HhrgxMEJhTy2Ot1DOSgSv73BzaXH2L1w5OR";
 
@@ -30,9 +30,12 @@ const TemporaryLoginHandler = (
     });
 
   if (
-    req.body.user.toLowerCase() === "arthurdw" &&
+    (req.body.user.toLowerCase() === "arthurdw" ||
+      req.body.user.toLowerCase() === "arthur.dewitte@gmail.com") &&
     req.body.password === password
-  )
+  ) {
+    const expires = new Date();
+    expires.setDate(expires.getDate() + 1);
     return res
       .status(200)
       .setHeader(
@@ -41,9 +44,11 @@ const TemporaryLoginHandler = (
           path: "/",
           secure: process.env.NODE_ENV === "production",
           httpOnly: process.env.NODE_ENV === "production",
+          expires,
         })
       )
       .send(undefined);
+  }
   return res.status(401).json({
     error: "The provided credentials are invalid!",
     code: 401,

@@ -31,8 +31,7 @@ const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
     const { user, isLoading, error } = useLoggedInUser();
 
     if (isLoading) return <p>Loading...</p>;
-    if (error) {
-      console.log(error);
+    if (error !== undefined) {
       router.push("/login");
       return <></>;
     }
