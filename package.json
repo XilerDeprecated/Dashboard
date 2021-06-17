@@ -1,0 +1,27 @@
+{
+  "name": "dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/cookie": "^0.4.0",
+    "@xiler/icon": "^0.0.4",
+    "@xiler/theme": "^1.0.3",
+    "cookie": "^0.4.1",
+    "next": "11.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sha3": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.11",
+    "eslint": "7.28.0",
+    "eslint-config-next": "11.0.0",
+    "typescript": "4.3.3"
+  }
+}

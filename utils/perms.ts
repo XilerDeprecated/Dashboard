@@ -1,0 +1,7 @@
+export enum Permissions {
+  MEMBER = 0x00,
+  SUPPORT = MEMBER | 0x32,
+  MODERATOR = SUPPORT | 0x64,
+  ADMIN = MODERATOR | 0x128,
+  MANAGEMENT = ADMIN | 0x256,
+}
