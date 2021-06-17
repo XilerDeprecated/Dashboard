@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-dark-600;
+  @apply text-primary-500;
+  @apply font-roboto;
+  @apply overflow-hidden;
+}

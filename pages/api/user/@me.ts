@@ -2,19 +2,12 @@ import type {
   CustomRequestCookieType,
   ErrorType,
   UserCookieType,
-} from "@utils/requestTypes";
+} from "@appTypes/requestTypes";
 
 import type { NextApiResponse } from "next";
 import { Permissions } from "@utils/perms";
+import { UserResponseDataType } from "@appTypes/user";
 import { accessToken } from "../login";
-
-type UserResponseDataType = {
-  id: string;
-  permissionLevel: number;
-  username: string;
-  profilePicture?: string;
-  status: "online" | "idle" | "offline";
-};
 
 const CurrentUserHandler = (
   req: CustomRequestCookieType<UserCookieType>,

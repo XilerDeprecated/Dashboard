@@ -2,7 +2,7 @@ import type {
   CustomRequestCookieType,
   ErrorType,
   UserCookieType,
-} from "@utils/requestTypes";
+} from "@appTypes/requestTypes";
 
 import type { NextApiResponse } from "next";
 import { serialize } from "cookie";

@@ -21,7 +21,10 @@
     "paths": {
       "@utils/*": [
         "./utils/*"
-      ]
+      ],
+      "@appTypes/*": [
+        "./types/*"
+      ],
     }
   },
   "include": [
