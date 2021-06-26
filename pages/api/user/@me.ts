@@ -5,7 +5,7 @@ import type {
 } from "@appTypes/requestTypes";
 
 import type { NextApiResponse } from "next";
-import { Permissions } from "@utils/perms";
+import { Permissions } from "../../../src/utils/perms";
 import { UserResponseDataType } from "@appTypes/user";
 import { accessToken } from "../login";
 

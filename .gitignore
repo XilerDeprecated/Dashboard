@@ -39,3 +39,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Ide's
+.vscode
+.idea

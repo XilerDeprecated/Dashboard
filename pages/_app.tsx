@@ -10,8 +10,9 @@ import { UserResponseDataType } from "@appTypes/user";
 import { fetcher } from "@utils/requests";
 import useSWR from "swr";
 
-export const UserContext =
-  createContext<UserResponseDataType | undefined>(undefined);
+export const UserContext = createContext<UserResponseDataType | undefined>(
+  undefined
+);
 
 const useLoggedInUser = () => {
   const { data, error } = useSWR<UserResponseDataType | ErrorType>(
@@ -32,7 +33,7 @@ const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
 
     if (isLoading) return <p>Loading...</p>;
     if (error !== undefined) {
-      router.push("/login");
+      router.push("/login").then();
       return <></>;
     }
     return (
