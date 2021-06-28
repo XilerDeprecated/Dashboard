@@ -36,18 +36,19 @@ const TemporaryLoginHandler = (
   ) {
     const expires = new Date();
     expires.setDate(expires.getDate() + 1);
-    return res
-      .status(200)
-      .setHeader(
-        "Set-Cookie",
-        serialize("@xiler/user_secret", accessToken, {
-          path: "/",
-          secure: process.env.NODE_ENV === "production",
-          httpOnly: process.env.NODE_ENV === "production",
-          expires,
-        })
-      )
-      .send(undefined);
+
+    res.setHeader(
+      "Set-Cookie",
+      serialize("@xiler/user_secret", accessToken, {
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+        httpOnly: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        expires,
+      })
+    );
+
+    return res.status(200).send(undefined);
   }
   return res.status(401).json({
     error: "The provided credentials are invalid!",

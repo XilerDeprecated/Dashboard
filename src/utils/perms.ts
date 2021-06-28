@@ -20,3 +20,15 @@ export enum Permissions {
   /** Represents a member of our management team, which should allow them to perform every action. */
   MANAGEMENT = ADMIN | 0x256,
 }
+
+/**
+ * Easily check if a user has a certain permission.
+ *
+ * @param user The user that should be checked.
+ * @param permission The permission which the user must have.
+ * @returns Wheter the user has that permission or not.
+ */
+export const hasPermission = (
+  user: { permissionLevel: number },
+  permission: number
+): boolean => (user.permissionLevel & permission) === permission;

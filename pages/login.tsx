@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { API_BASE_URL } from "@utils/config";
 import { ErrorType } from "@appTypes/requestTypes";
@@ -82,7 +82,9 @@ const UserLoginComponent: React.FC = () => {
 };
 
 export const LoginPage: React.FC = () => {
-  logout();
+  useEffect(() => {
+    logout();
+  }, []);
 
   return (
     <>

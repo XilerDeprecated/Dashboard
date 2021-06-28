@@ -23,13 +23,18 @@ const LogoutHandler = (
       code: 400,
     });
 
-  return res
-    .status(200)
-    .setHeader(
-      "Set-Cookie",
-      serialize("@xiler/user_secret", "", { path: "/", expires: new Date(0) })
-    )
-    .send(undefined);
+  res.setHeader(
+    "Set-Cookie",
+    serialize("@xiler/user_secret", "", {
+      path: "/",
+      expires: new Date(0),
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+    })
+  );
+
+  return res.status(200).send(undefined);
 };
 
 export default LogoutHandler;

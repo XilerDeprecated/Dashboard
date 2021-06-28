@@ -2,10 +2,13 @@ import "../styles/tailwind.css";
 
 import { ErrorType, isError } from "@appTypes/requestTypes";
 import { NextRouter, useRouter } from "next/router";
+import { Permissions, hasPermission } from "@utils/perms";
 import React, { createContext } from "react";
 
 import { API_BASE_URL } from "@utils/config";
 import type { AppProps } from "next/app";
+import { BannedScreen } from "src/components/BannedScreen";
+import Head from "next/head";
 import { UserResponseDataType } from "@appTypes/user";
 import { fetcher } from "@utils/requests";
 import useSWR from "swr";
@@ -31,13 +34,26 @@ const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
   ({ app, router }) => {
     const { user, isLoading, error } = useLoggedInUser();
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading)
+      return (
+        <>
+          <Head>Xiler | Loading...</Head>
+          <p>Loading...</p>
+        </>
+      );
     if (error !== undefined) {
       router.push("/login").then();
       return <></>;
     }
+
+    const usr = user as UserResponseDataType;
+
+    // Check if the user has member rights, if not they were banned.
+    if (!hasPermission(usr, Permissions.MEMBER))
+      return <BannedScreen username={usr.username} />;
+
     return (
-      <UserContext.Provider value={user as UserResponseDataType}>
+      <UserContext.Provider value={usr}>
         <app.Component {...app.pageProps} />
       </UserContext.Provider>
     );
