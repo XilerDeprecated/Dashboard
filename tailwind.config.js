@@ -24,6 +24,9 @@ module.exports = {
     extend: {
       gridTemplateRows: {
         "fix-bottom": "1fr auto"
+      },
+      gridTemplateColumns: {
+        "fix-right": "1fr auto"
       }
     }
   },

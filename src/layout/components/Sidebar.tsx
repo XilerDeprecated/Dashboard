@@ -61,13 +61,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
         <div className="flex justify-center align-middle py-6">
           <Icon
             className={`${
-              isHidden ? "" : "mr-4"
+              isHidden ? "delay-100" : "mr-4"
             } fill-current text-secondary-500 transition-all`}
             size={{ width: 40, height: 40 }}
           />
 
           <h1
-            className={`my-auto text-2xl text-secondary-500 select-none ${
+            className={`my-auto text-2xl text-secondary-500 select-none font-bold ${
               isHidden ? "invisible absolute" : ""
             }`}
           >
@@ -106,12 +106,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
       </div>
       <div
         onClick={() => setIsHidden(!isHidden)}
-        className="p-1.5 group mb-3 ml-3"
+        className="p-1.5 group mb-3 ml-3 cursor-pointer w-min"
       >
         <ArrowIcon
           className={`fill-current text-primary-600 group-hover:text-primary-500 ${
             isHidden ? "transform rotate-180" : ""
-          } transition-all cursor-pointer`}
+          } transition-all`}
           size={{ width: 21, height: 13.5 }}
         />
       </div>

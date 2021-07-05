@@ -32,3 +32,24 @@ export const hasPermission = (
   user: { permissionLevel: number },
   permission: number
 ): boolean => (user.permissionLevel & permission) === permission;
+
+/**
+ * Get the named permission from a permission level.
+ *
+ * @param perm The permission to get the name from.
+ * @returns The name of the permission.
+ */
+export const getNamedPermission = (perm: number) => {
+  const hsPerm = (lvl: number) => hasPermission({ permissionLevel: perm }, lvl);
+
+  if (hsPerm(Permissions.MANAGEMENT)) return "Management";
+  else if (hsPerm(Permissions.ADMIN)) return "Admin";
+  else if (hsPerm(Permissions.MODERATOR)) return "Moderator";
+  else if (hsPerm(Permissions.SUPPORT)) return "Support";
+  else if (hsPerm(Permissions.MEMBER)) return "Member";
+  else if (hsPerm(Permissions.BANNED)) return "Banned";
+
+  throw new Error(
+    `Permission name with value ${perm} could not get extracted.`
+  );
+};
