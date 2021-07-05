@@ -21,4 +21,4 @@ export const logout = () =>
     credentials: "include",
   }).catch((e) => e);
 
-// TODO: Make custom method for all request types and handle then properly.
+// TODO: Make custom method for all request types and handle then properly. (fg get, post, ...)

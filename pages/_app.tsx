@@ -7,16 +7,22 @@ import React, { createContext } from "react";
 
 import { API_BASE_URL } from "@utils/config";
 import type { AppProps } from "next/app";
-import { BannedScreen } from "src/components/BannedScreen";
+import { BannedScreen } from "@components/BannedScreen";
 import Head from "next/head";
+import { Layout } from "@src/layout";
 import { UserResponseDataType } from "@appTypes/user";
 import { fetcher } from "@utils/requests";
 import useSWR from "swr";
 
-export const UserContext = createContext<UserResponseDataType | undefined>(
-  undefined
-);
+/** The global user, it will never get shown to the client as undefined. */
+// prettier-ignore
+export const UserContext = createContext<UserResponseDataType | undefined>(undefined);
 
+/**
+ * Fetch the current logged in user, this utilizes SWR. (So requests are optimized.)
+ *
+ * @returns An object which contains the current state and details about the request.
+ */
 const useLoggedInUser = () => {
   const { data, error } = useSWR<UserResponseDataType | ErrorType>(
     `${API_BASE_URL}/user/@me`,
@@ -24,12 +30,21 @@ const useLoggedInUser = () => {
   );
 
   return {
+    /** The response ot the request, which should be a user. */
     user: data,
+    /** If the request is still being processed. */
     isLoading: !error && !data,
+    /** This will contain an error if the request returned an error or if an error with SWR occurred. */
     error: isError(data) ? data : error,
   };
 };
 
+/**
+ *
+ * @param app The passed application.
+ * @param router An initialized router.
+ * @returns The page in the dashboard layout with a user in the context.
+ */
 const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
   ({ app, router }) => {
     const { user, isLoading, error } = useLoggedInUser();
@@ -38,11 +53,16 @@ const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
       return (
         <>
           <Head>Xiler | Loading...</Head>
+          {/* TODO: Add loader component. */}
           <p>Loading...</p>
         </>
       );
+
+    // Redirect the user to the login and provide the current URI as reference for a redirect afterwards.
     if (error !== undefined) {
-      router.push("/login").then();
+      router
+        .push({ pathname: "/login", query: { ref: app.router.asPath } })
+        .then();
       return <></>;
     }
 
@@ -54,7 +74,9 @@ const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
 
     return (
       <UserContext.Provider value={usr}>
-        <app.Component {...app.pageProps} />
+        <Layout>
+          <app.Component {...app.pageProps} />
+        </Layout>
       </UserContext.Provider>
     );
   };
@@ -62,8 +84,11 @@ const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
 const DashboardApp: React.FC<AppProps> = (app) => {
   const router = useRouter();
 
-  if (router.pathname === "/login") return <app.Component {...app.pageProps} />;
+  // Since a user has not signed in we need to redirect them the sign in screen.
+  if (app.router.route === "/login")
+    return <app.Component {...app.pageProps} />;
 
+  // Otherwise we can display the page.
   return <DashboardAppWithLogin app={app} router={router} />;
 };
 

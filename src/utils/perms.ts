@@ -26,7 +26,7 @@ export enum Permissions {
  *
  * @param user The user that should be checked.
  * @param permission The permission which the user must have.
- * @returns Wheter the user has that permission or not.
+ * @returns Whether the user has that permission or not.
  */
 export const hasPermission = (
   user: { permissionLevel: number },

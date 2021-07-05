@@ -1,4 +1,4 @@
 export const Main: React.FC = () => {
-  return <div>Sample</div>;
+  return <div>Error</div>;
 };
 export default Main;
