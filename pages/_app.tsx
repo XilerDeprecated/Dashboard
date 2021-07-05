@@ -8,6 +8,7 @@ import React, { createContext } from "react";
 import { API_BASE_URL } from "@utils/config";
 import type { AppProps } from "next/app";
 import { BannedScreen } from "@components/BannedScreen";
+import { ErrorScreen } from "@src/components/ErrorScreen";
 import Head from "next/head";
 import { Layout } from "@src/layout";
 import { UserResponseDataType } from "@appTypes/user";
@@ -87,6 +88,8 @@ const DashboardApp: React.FC<AppProps> = (app) => {
   // Since a user has not signed in we need to redirect them the sign in screen.
   if (app.router.route === "/login")
     return <app.Component {...app.pageProps} />;
+  else if (app.router.route === "/_error")
+    return <ErrorScreen />
 
   // Otherwise we can display the page.
   return <DashboardAppWithLogin app={app} router={router} />;

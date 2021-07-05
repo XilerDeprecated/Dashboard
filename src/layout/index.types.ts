@@ -1,7 +1,7 @@
 /**
  * Represents a reference link in the sidebar.
  */
-type SidebarItem = {
+export type SidebarItem = {
     /** The actual string that will be displayed to the client. */
     name: string;
     /** The HTML reference. */
@@ -11,7 +11,7 @@ type SidebarItem = {
 /** 
  * Represents an indented sidebar subsection.
  */
-type SidebarSection = {
+export type SidebarSection = {
     /** The title of the section. */
     title: string;
     /** The items from the section. */

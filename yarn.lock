@@ -384,13 +384,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xiler/icon@npm:^0.0.9":
-  version: 0.0.9
-  resolution: "@xiler/icon@npm:0.0.9"
+"@xiler/icon@npm:^0.0.10":
+  version: 0.0.10
+  resolution: "@xiler/icon@npm:0.0.10"
   dependencies:
     "@xiler/theme": ^1.0
     react: ^17.0
-  checksum: 68c469e559debfccc500178b942569cca825cd46d019811c642746ad257f0cdcf40c942b0a9517f08433328dcf9e7d0922e789378857f06f941505d0f303f193
+  checksum: 7b4dec6e8353e41d622d2e80198677691613c42356091b935a00cf810597fd95aea9f369f089cca72c4d78a33cf448f5a5b3b2b4352db30e43e7aa2192a059e9
   languageName: node
   linkType: hard
 
@@ -1560,7 +1560,7 @@ __metadata:
   dependencies:
     "@types/cookie": ^0.4.0
     "@types/react": 17.0.11
-    "@xiler/icon": ^0.0.9
+    "@xiler/icon": ^0.0.10
     "@xiler/theme": ^1.0.3
     autoprefixer: ^10.2.6
     cookie: ^0.4.1
@@ -1575,7 +1575,7 @@ __metadata:
     sha3: ^2.1.4
     swr: ^0.5.6
     tailwindcss: ^2.1.4
-    typescript: ^4.3.3
+    typescript: 4.3.3
   languageName: unknown
   linkType: soft
 
@@ -5873,23 +5873,23 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-typescript@^4.3.3:
-  version: 4.3.4
-  resolution: "typescript@npm:4.3.4"
+typescript@4.3.3:
+  version: 4.3.3
+  resolution: "typescript@npm:4.3.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 9791c5fe98db6cb70ec0efad8d3d2eb957b9643ee600b90bff49267de69768d0d5f59c41a8fd731cfd63df1ccfb2cb25505a2015d7b39ac10ea51f605a058e16
+  checksum: a5cd61a84cbf6311840f97584dd098fa5743a23a541dbd41d99e8e95e8589aef62b41effdb7e0a67cc9023aa380468c320526352e3fbb43539e7ba9e2483d026
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.3.3#builtin<compat/typescript>":
-  version: 4.3.4
-  resolution: "typescript@patch:typescript@npm%3A4.3.4#builtin<compat/typescript>::version=4.3.4&hash=ddfc1b"
+"typescript@patch:typescript@4.3.3#builtin<compat/typescript>":
+  version: 4.3.3
+  resolution: "typescript@patch:typescript@npm%3A4.3.3#builtin<compat/typescript>::version=4.3.3&hash=ddfc1b"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: c8766e84a4f71e925cc059af8286cc7f41819fe821d433b90c83e9b36729cbda7a8e4be3292d8a1433cd717d529c93217d58d173418f43862290b206bd88b284
+  checksum: 9fff16e8bd0648af1744cbc722eddef94b9d7e746f257e9b3ceeb5e93d301c1824cf4d851aef80c08f920e2506380808aaed500480d0d39e9a38aad00f8bab68
   languageName: node
   linkType: hard
 

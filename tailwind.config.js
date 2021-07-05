@@ -21,6 +21,11 @@ module.exports = {
       roboto: ["Roboto", "sans-serif"],
     },
     colors: DarkTheme,
+    extend: {
+      gridTemplateRows: {
+        "fix-bottom": "1fr auto"
+      }
+    }
   },
   variants: {
     extend: {},

@@ -8,3 +8,11 @@ body {
   @apply font-roboto;
   @apply overflow-hidden;
 }
+
+#__next {
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+}
