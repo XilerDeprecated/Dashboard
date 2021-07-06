@@ -48,7 +48,7 @@ const routes: Route[] = [
 
 export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
   const router = useRouter();
-  const [isHidden, setIsHidden] = useState<boolean>(false);
+  const [isHidden, setIsHidden] = useState<boolean>(window.innerWidth < 1152);
 
   return (
     <div
@@ -60,14 +60,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
         <div className="flex justify-center align-middle py-6">
           <Icon
             className={`${
-              isHidden ? "mr-0" : "mr-4 delay-100"
+              isHidden ? "mr-0" : "sm:mr-4 delay-100"
             } fill-current text-secondary-500 transition-all`}
             size={{ width: 40, height: 40 }}
           />
 
           <h1
-            className={`my-auto text-2xl text-secondary-500 select-none font-bold ${
-              isHidden ? "invisible absolute" : "delay-100"
+            className={`my-auto text-2xl text-secondary-500 select-none font-bold invisible ${
+              isHidden ? "invisible absolute" : "delay-100 sm:visible"
             }`}
           >
             Xiler
@@ -86,10 +86,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
             return (
               <Link key={idx} href={route.ref}>
                 <a
-                  className={`${fgColor} my-auto hover:text-primary-500 transition-colors flex ${bgColor} p-2 rounded group cursor-pointer`}
+                  className={`text-primary-500 sm:${fgColor} my-auto hover:text-primary-500 transition-colors flex ${bgColor} p-2 rounded group cursor-pointer`}
                 >
                   <route.Icon
-                    className={`fill-current ${fgColor} ${
+                    className={`fill-current text-primary-500 sm:${fgColor} ${
                       isHidden ? "" : "mr-1.5"
                     } group-hover:text-primary-500 transition-all m-1`}
                     size={{ width: 20, height: 20 }}
@@ -105,7 +105,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
       </div>
       <div
         onClick={() => setIsHidden(!isHidden)}
-        className="p-1.5 group mb-3 ml-3 cursor-pointer w-min"
+        className="p-1.5 group mb-3 ml-3 cursor-pointer w-min invisible sm:visible"
       >
         <ArrowIcon
           className={`fill-current text-primary-600 group-hover:text-primary-500 ${

@@ -20,15 +20,24 @@ module.exports = {
     fontFamily: {
       roboto: ["Roboto", "sans-serif"],
     },
-    colors: DarkTheme,
+    colors: {
+      ...DarkTheme,
+      online: "#28C76F",
+    },
     extend: {
       gridTemplateRows: {
-        "fix-bottom": "1fr auto"
+        "fix-bottom": "1fr auto",
       },
       gridTemplateColumns: {
-        "fix-right": "1fr auto"
-      }
-    }
+        "fix-right": "1fr auto",
+      },
+      borderWidth: {
+        3: "3px",
+      },
+      maxWidth: {
+        "xxs": "8rem",
+      },
+    },
   },
   variants: {
     extend: {},
