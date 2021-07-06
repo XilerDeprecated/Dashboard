@@ -4,7 +4,6 @@ import {
   DashboardIcon,
   DocumentationIcon,
   Icon,
-  InboxIcon,
 } from "@xiler/icon/lib/Components";
 import { SidebarItem, SidebarSection } from "../index.types";
 
@@ -32,19 +31,19 @@ const routes: Route[] = [
   },
   {
     name: "Documentation",
-    ref: "/documentation",
+    ref: "/docs",
     Icon: DocumentationIcon,
   },
   {
     name: "Applications",
-    ref: "/applications",
+    ref: "/apps",
     Icon: ApplicationsIcon,
   },
-  {
-    name: "Inbox",
-    ref: "/inbox",
-    Icon: InboxIcon,
-  },
+  // {
+  //   name: "Inbox",
+  //   ref: "/inbox",
+  //   Icon: InboxIcon,
+  // },
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
@@ -61,14 +60,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
         <div className="flex justify-center align-middle py-6">
           <Icon
             className={`${
-              isHidden ? "delay-100" : "mr-4"
+              isHidden ? "mr-0" : "mr-4 delay-100"
             } fill-current text-secondary-500 transition-all`}
             size={{ width: 40, height: 40 }}
           />
 
           <h1
             className={`my-auto text-2xl text-secondary-500 select-none font-bold ${
-              isHidden ? "invisible absolute" : ""
+              isHidden ? "invisible absolute" : "delay-100"
             }`}
           >
             Xiler
@@ -77,7 +76,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
         <nav
           className={`flex flex-col ${
             isHidden ? "w-min" : "w-11/12"
-          } mx-auto transition-all`}
+          } mx-auto transition-all min-w-max`}
         >
           {routes.map((route, idx) => {
             const isActive = route.ref === router.route;
@@ -87,15 +86,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
             return (
               <Link key={idx} href={route.ref}>
                 <a
-                  className={`${fgColor} my-auto hover:text-primary-500 transition-colors flex align-middle ${bgColor} p-2 rounded group cursor-pointer`}
+                  className={`${fgColor} my-auto hover:text-primary-500 transition-colors flex ${bgColor} p-2 rounded group cursor-pointer`}
                 >
                   <route.Icon
                     className={`fill-current ${fgColor} ${
                       isHidden ? "" : "mr-1.5"
-                    } my-auto group-hover:text-primary-500 transition-all`}
+                    } group-hover:text-primary-500 transition-all m-1`}
                     size={{ width: 20, height: 20 }}
                   />
-                  <span className={isHidden ? "invisible absolute" : "delay-100"}>
+                  <span className={`${isHidden ? "invisible absolute opacity-0" : "delay-100 opacity-100"} transition-all`}>
                     {route.name}
                   </span>
                 </a>

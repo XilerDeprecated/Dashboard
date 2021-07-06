@@ -1,11 +1,11 @@
 import "../styles/tailwind.css";
 
+import { API_BASE_URL, LOGIN_URL } from "@utils/config";
 import { ErrorType, isError } from "@appTypes/requestTypes";
 import { NextRouter, useRouter } from "next/router";
 import { Permissions, hasPermission } from "@utils/perms";
 import React, { createContext } from "react";
 
-import { API_BASE_URL } from "@utils/config";
 import type { AppProps } from "next/app";
 import { BannedScreen } from "@components/BannedScreen";
 import { ErrorScreen } from "@src/components/ErrorScreen";
@@ -61,9 +61,8 @@ const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
 
     // Redirect the user to the login and provide the current URI as reference for a redirect afterwards.
     if (error !== undefined) {
-      router
-        .push({ pathname: "/login", query: { ref: app.router.asPath } })
-        .then();
+      const query = app.router.asPath === "/" ? {} : { ref: app.router.asPath };
+      router.push({ pathname: "/login", query }).then();
       return <></>;
     }
 
@@ -86,10 +85,10 @@ const DashboardApp: React.FC<AppProps> = (app) => {
   const router = useRouter();
 
   // Since a user has not signed in we need to redirect them the sign in screen.
-  if (app.router.route === "/login")
+  if (app.router.route === "login")
+    // TODO: In production let it redirect to the OAuth.
     return <app.Component {...app.pageProps} />;
-  else if (app.router.route === "/_error")
-    return <ErrorScreen />
+  else if (app.router.route === "/_error") return <ErrorScreen />;
 
   // Otherwise we can display the page.
   return <DashboardAppWithLogin app={app} router={router} />;
