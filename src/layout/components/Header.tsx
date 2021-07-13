@@ -1,13 +1,10 @@
-import {
-  BellIcon,
-  SearchIcon,
-  SettingsIcon,
-  SignOutIcon,
-} from "@xiler/icon/lib/Components";
 import { Permissions, getNamedPermission } from "@utils/perms";
 import React, { useContext } from "react";
 
 import Image from "next/image";
+import {
+  SignOutIcon,
+} from "@xiler/icon/lib/Components";
 import { UserContext } from "pages/_app";
 import { logout } from "@utils/requests";
 import { useRouter } from "next/router";
@@ -22,12 +19,12 @@ export const Header: React.FC = () => {
   return (
     <header className="grid grid-cols-fix-right bg-dark-500 m-6 py-1 px-6 rounded">
       <div className="flex h-min my-auto">
-        <div>
+        {/* <div>
           <BellIcon className={btnStyle} size={{ width: 20, height: 20 }} />
         </div>
         <div>
           <SettingsIcon className={btnStyle} size={{ width: 20, height: 20 }} />
-        </div>
+        </div> */}
         <div
           onClick={() => {
             logout();
@@ -36,9 +33,9 @@ export const Header: React.FC = () => {
         >
           <SignOutIcon className={btnStyle} size={{ width: 20, height: 20 }} />
         </div>
-        <div>
+        {/* <div>
           <SearchIcon className={btnStyle} size={{ width: 20, height: 20 }} />
-        </div>
+        </div> */}
       </div>
       <div className="grid grid-cols-fix-right text-right gap-x-3 h-14 invisible sm:visible">
         <div className="my-auto">

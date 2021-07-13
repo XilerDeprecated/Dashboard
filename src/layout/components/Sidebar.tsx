@@ -86,7 +86,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
             return (
               <Link key={idx} href={route.ref}>
                 <a
-                  className={`text-primary-500 sm:${fgColor} my-auto hover:text-primary-500 transition-colors flex ${bgColor} p-2 rounded group cursor-pointer`}
+                  className={`text-primary-500 sm:${fgColor} my-auto hover:text-primary-500 transition-all flex ${bgColor} p-2 rounded group cursor-pointer ${isActive ? "" : "delay-100"}`}
                 >
                   <route.Icon
                     className={`fill-current text-primary-500 sm:${fgColor} ${
