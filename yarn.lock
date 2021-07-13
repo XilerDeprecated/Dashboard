@@ -304,6 +304,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-toastify@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@types/react-toastify@npm:4.1.0"
+  dependencies:
+    react-toastify: "*"
+  checksum: dc1697270feed6cd66a9ddd77bd818b9bd0a5e692c01c54cf6e9e4ff3dea3032cc6126e7b7a0be22fd88eed2dbcfae35c649da92b9aada39520df33b865dde57
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:17.0.11":
   version: 17.0.11
   resolution: "@types/react@npm:17.0.11"
@@ -1138,6 +1147,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clsx@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "clsx@npm:1.1.1"
+  checksum: d8ae10ac0546da19fe8c9516886f6582a64a382cf4d09ea7d36d5287cafbdab1192ab249adc2cdf0310e0b0aeac4f4142cf7c738c98d9cb68c19ba24b6f673d5
+  languageName: node
+  linkType: hard
+
 "code-point-at@npm:^1.0.0":
   version: 1.1.0
   resolution: "code-point-at@npm:1.1.0"
@@ -1560,6 +1576,7 @@ __metadata:
   dependencies:
     "@types/cookie": ^0.4.0
     "@types/react": 17.0.11
+    "@types/react-toastify": ^4.1.0
     "@xiler/icon": ^0.0.10
     "@xiler/theme": ^1.0.3
     autoprefixer: ^10.2.6
@@ -1572,6 +1589,7 @@ __metadata:
     postcss: ^8.3.5
     react: 17.0.2
     react-dom: 17.0.2
+    react-toastify: ^7.0.4
     sha3: ^2.1.4
     swr: ^0.5.6
     tailwindcss: ^2.1.4
@@ -4851,6 +4869,18 @@ __metadata:
   version: 0.8.3
   resolution: "react-refresh@npm:0.8.3"
   checksum: 38f06df8e0a20701b96e5d680838a3528d66cfb53db79843d30cb9517df3262ec596607147439975267bf0634bee77101db37298ea79b5742cc28664632f3c76
+  languageName: node
+  linkType: hard
+
+"react-toastify@npm:*, react-toastify@npm:^7.0.4":
+  version: 7.0.4
+  resolution: "react-toastify@npm:7.0.4"
+  dependencies:
+    clsx: ^1.1.1
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 20e82333a0e1235853734e3d190a61473f8b58736a1249079dba8f35154a3465dbb074a9f90ebb18dc34b9dbbde54280d956c6e8a02dbf68e723cd9fb5325bb9
   languageName: node
   linkType: hard
 

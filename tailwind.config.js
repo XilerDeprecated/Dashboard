@@ -23,6 +23,7 @@ module.exports = {
     colors: {
       ...DarkTheme,
       online: "#28C76F",
+      transparent: "#00000000"
     },
     extend: {
       gridTemplateRows: {

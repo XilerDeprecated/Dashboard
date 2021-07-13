@@ -9,12 +9,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/react-toastify": "^4.1.0",
     "@xiler/icon": "^0.0.10",
     "@xiler/theme": "^1.0.3",
     "cookie": "^0.4.1",
     "next": "11.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-toastify": "^7.0.4",
     "sha3": "^2.1.4",
     "swr": "^0.5.6"
   },

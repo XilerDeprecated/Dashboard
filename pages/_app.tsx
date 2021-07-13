@@ -1,44 +1,23 @@
 import "../styles/tailwind.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
-import { ErrorType, isError } from "@appTypes/requestTypes";
 import { NextRouter, useRouter } from "next/router";
 import { Permissions, hasPermission } from "@utils/perms";
 import React, { createContext } from "react";
 
-import { API_BASE_URL } from "@utils/config";
+import { ApiEndpoints } from "@utils/config";
 import type { AppProps } from "next/app";
-import { BannedScreen } from "@components/BannedScreen";
-import { ErrorScreen } from "@src/components/ErrorScreen";
+import { BannedScreen } from "@src/components/Banned.screen";
+import { ErrorScreen } from "@src/components/Error.screen";
 import Head from "next/head";
 import { Layout } from "@src/layout";
+import { ToastContainer } from "react-toastify";
 import { UserResponseDataType } from "@appTypes/user";
-import { fetcher } from "@utils/requests";
-import useSWR from "swr";
+import { useAPI } from "@utils/requests";
 
 /** The global user, it will never get shown to the client as undefined. */
 // prettier-ignore
 export const UserContext = createContext<UserResponseDataType | undefined>(undefined);
-
-/**
- * Fetch the current logged in user, this utilizes SWR. (So requests are optimized.)
- *
- * @returns An object which contains the current state and details about the request.
- */
-const useLoggedInUser = () => {
-  const { data, error } = useSWR<UserResponseDataType | ErrorType>(
-    `${API_BASE_URL}/user/@me`,
-    fetcher
-  );
-
-  return {
-    /** The response ot the request, which should be a user. */
-    user: data,
-    /** If the request is still being processed. */
-    isLoading: !error && !data,
-    /** This will contain an error if the request returned an error or if an error with SWR occurred. */
-    error: isError(data) ? data : error,
-  };
-};
 
 /**
  *
@@ -48,7 +27,9 @@ const useLoggedInUser = () => {
  */
 const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
   ({ app, router }) => {
-    const { user, isLoading, error } = useLoggedInUser();
+    const { data, isLoading, error } = useAPI<UserResponseDataType>(
+      ApiEndpoints.me
+    );
 
     if (isLoading)
       return (
@@ -66,18 +47,31 @@ const DashboardAppWithLogin: React.FC<{ app: AppProps; router: NextRouter }> =
       return <></>;
     }
 
-    const usr = user as UserResponseDataType;
+    const usr = data as UserResponseDataType;
 
     // Check if the user has member rights, if not they were banned.
     if (!hasPermission(usr, Permissions.MEMBER))
       return <BannedScreen username={usr.username} />;
 
     return (
-      <UserContext.Provider value={usr}>
-        <Layout>
-          <app.Component {...app.pageProps} />
-        </Layout>
-      </UserContext.Provider>
+      <>
+        <UserContext.Provider value={usr}>
+          <Layout>
+            <app.Component {...app.pageProps} />
+          </Layout>
+        </UserContext.Provider>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </>
     );
   };
 

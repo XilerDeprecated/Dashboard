@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { logout } from "@utils/requests";
 import { useRouter } from "next/router";
 
 export const BannedScreen: React.FC<{ username: string }> = ({ username }) => {
@@ -22,7 +23,10 @@ export const BannedScreen: React.FC<{ username: string }> = ({ username }) => {
 
           <button
             className="p-3 mt-5 transition-colors rounded bg-secondary-500 hover:bg-secondary-600"
-            onClick={() => router.push("/login")}
+            onClick={() => {
+              logout();
+              router.push("/login");
+            }}
           >
             Sign Out
           </button>

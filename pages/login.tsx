@@ -1,6 +1,6 @@
+import { API_BASE_URL, ApiEndpoints } from "@utils/config";
 import React, { useEffect, useState } from "react";
 
-import { API_BASE_URL } from "@utils/config";
 import { ErrorType } from "@appTypes/requestTypes";
 import Head from "next/head";
 import { Icon } from "@xiler/icon/lib/Components";
@@ -19,7 +19,7 @@ const UserLoginComponent: React.FC = () => {
     }
 
     const hash = new SHA3(512).update(password).digest("hex");
-    const res = await fetch(`${API_BASE_URL}/login`, {
+    const res = await fetch(API_BASE_URL + ApiEndpoints.login, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
