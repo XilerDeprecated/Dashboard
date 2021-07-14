@@ -393,13 +393,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xiler/icon@npm:^0.0.10":
-  version: 0.0.10
-  resolution: "@xiler/icon@npm:0.0.10"
+"@xiler/icon@npm:^0.0.11":
+  version: 0.0.11
+  resolution: "@xiler/icon@npm:0.0.11"
   dependencies:
     "@xiler/theme": ^1.0
     react: ^17.0
-  checksum: 7b4dec6e8353e41d622d2e80198677691613c42356091b935a00cf810597fd95aea9f369f089cca72c4d78a33cf448f5a5b3b2b4352db30e43e7aa2192a059e9
+  checksum: fe7d9f094e14402911013b80545f7580980db991391d3256c6c3d723d7b632e112fcb14b26bafa62a2f33a79d5016146261e8deca4c9f3df2946076610382289
   languageName: node
   linkType: hard
 
@@ -1577,7 +1577,7 @@ __metadata:
     "@types/cookie": ^0.4.0
     "@types/react": 17.0.11
     "@types/react-toastify": ^4.1.0
-    "@xiler/icon": ^0.0.10
+    "@xiler/icon": ^0.0.11
     "@xiler/theme": ^1.0.3
     autoprefixer: ^10.2.6
     cookie: ^0.4.1

@@ -31,11 +31,12 @@ export const Balance: React.FC = () => {
   // TODO: Document this
   const percentage =
     isNumber(dt.balance) && isNumber(dt.consumed)
-      ? Math.round((dt.consumed / dt.balance) * 10000) / 100
+      ? Math.floor((dt.consumed / dt.balance) * 10000) / 100
       : 0;
 
   // TODO: Document this
-  const degree = (percentage / 100) * 360;
+  const perWithOffset = percentage > 1 ? percentage - 0.6 : percentage;
+  const degree = (perWithOffset / 100) * 360;
   const circle = (Math.PI * 2 * (360 - degree)) / 360;
 
   return !isLoading && error !== undefined ? (
@@ -76,9 +77,9 @@ export const Balance: React.FC = () => {
             cy="50%"
             className="stroke-current text-accent-500"
             style={{
-              strokeDasharray: `${(percentage / 100) * (47 * (2 * Math.PI))} ${
-                (1 - percentage / 100) * (47 * (2 * Math.PI))
-              }`,
+              strokeDasharray: `${
+                (perWithOffset / 100) * (47 * (2 * Math.PI))
+              } ${(1 - perWithOffset / 100) * (47 * (2 * Math.PI))}`,
               strokeDashoffset: "-73",
               strokeWidth: "36",
             }}
