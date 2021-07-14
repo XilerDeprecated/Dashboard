@@ -27,7 +27,7 @@ const CurrentUserHandler = (
   if (req.cookies["@xiler/user_secret"] === accessToken)
     return res.status(200).json({
       balance: 81_491,
-      consumed: 47_986,
+      consumed: 81_491,
     });
 
   return res.status(401).json({

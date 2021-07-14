@@ -4,9 +4,10 @@ export const API_BASE_URL = "/api";
 /** The url that must be used to sign in. */
 export const LOGIN_URL = "/login";
 
+// TODO: Document this
 export enum ApiEndpoints {
-    login = "/login",
-    logout = "/logout",
-    me = "/user/@me",
-    balance = "/user/balance"
+  login = "/login",
+  logout = "/logout",
+  me = "/user/@me",
+  balance = "/user/balance",
 }

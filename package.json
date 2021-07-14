@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/react-toastify": "^4.1.0",
-    "@xiler/icon": "^0.0.10",
+    "@xiler/icon": "^0.0.11",
     "@xiler/theme": "^1.0.3",
     "cookie": "^0.4.1",
     "next": "11.0.0",

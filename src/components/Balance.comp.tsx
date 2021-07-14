@@ -2,11 +2,10 @@ import { ApiEndpoints } from "@utils/config";
 import { CoinsIcon } from "@xiler/icon/lib/Components";
 import { UserBalanceResponseDataType } from "@src/types/user";
 import { isError } from "@appTypes/requestTypes";
+import { isNumber } from "@utils/typeChecking";
 import { toast } from "react-toastify";
 import { useAPI } from "@utils/requests";
 import { useEffect } from "react";
-
-const getNumberOrZero = (x: any): number => (Number.isInteger(x) ? x : 0);
 
 export const Balance: React.FC = () => {
   const { data, isLoading, error } = useAPI<UserBalanceResponseDataType>(
@@ -31,9 +30,9 @@ export const Balance: React.FC = () => {
 
   // TODO: Document this
   const percentage =
-    Math.round(
-      (getNumberOrZero(dt.consumed) / getNumberOrZero(dt.balance)) * 10000
-    ) / 100;
+    isNumber(dt.balance) && isNumber(dt.consumed)
+      ? Math.round((dt.consumed / dt.balance) * 10000) / 100
+      : 0;
 
   // TODO: Document this
   const degree = (percentage / 100) * 360;
@@ -64,16 +63,33 @@ export const Balance: React.FC = () => {
         <p className="text-lg self-center text-center z-50 absolute left-1/2 transform -translate-x-1/2">
           {percentage}%
         </p>
-        <svg className="fill-current text-accent-500 w-32 h-32 transform rotate-180 rounded-full">
+        <svg className="w-32 h-32 transform rotate-180 rounded-full">
           <circle
+            className="fill-current text-accent-500"
             cx={64 + 56 * Math.sin(circle)}
             cy={64 + 56 * Math.cos(circle)}
             r="8"
           />
-          {/* TODO: Implement the pie chart.*/}
-          {/* <path fill="blue" d={`M64,64 L64,0 A64,64 1 0 1 121.21,121.21 z`} /> */}
+          <circle
+            r="47"
+            cx="50%"
+            cy="50%"
+            className="stroke-current text-accent-500"
+            style={{
+              strokeDasharray: `${(percentage / 100) * (47 * (2 * Math.PI))} ${
+                (1 - percentage / 100) * (47 * (2 * Math.PI))
+              }`,
+              strokeDashoffset: "-73",
+              strokeWidth: "36",
+            }}
+          />
+          <circle
+            r="48"
+            cx="50%"
+            cy="50%"
+            className="fill-current text-dark-500"
+          />
         </svg>
-        <div className="bg-dark-500 h-24 w-24 rounded-full self-center absolute left-1/2 transform -translate-x-1/2"></div>
       </div>
     </div>
   );
