@@ -86,7 +86,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
             return (
               <Link key={idx} href={route.ref}>
                 <a
-                  className={`text-primary-500 sm:${fgColor} my-auto hover:text-primary-500 transition-all flex ${bgColor} p-2 rounded group cursor-pointer ${isActive ? "" : "delay-100"}`}
+                  className={`text-primary-500 sm:${fgColor} my-auto hover:text-primary-500 transition-all flex ${bgColor} p-2 rounded group cursor-pointer ${
+                    isActive ? "" : "delay-100"
+                  }`}
                 >
                   <route.Icon
                     className={`fill-current text-primary-500 sm:${fgColor} ${
@@ -94,7 +96,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
                     } group-hover:text-primary-500 transition-all m-1`}
                     size={{ width: 20, height: 20 }}
                   />
-                  <span className={`${isHidden ? "invisible absolute opacity-0" : "delay-100 opacity-100"} transition-all`}>
+                  <span
+                    className={`${
+                      isHidden
+                        ? "invisible absolute opacity-0"
+                        : "delay-100 opacity-100"
+                    } transition-all`}
+                  >
                     {route.name}
                   </span>
                 </a>

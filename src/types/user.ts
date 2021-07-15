@@ -22,4 +22,4 @@ export type UserBalanceResponseDataType = {
   balance: number;
   /** How much they have used of their balance this month. */
   consumed: number;
-}
+};

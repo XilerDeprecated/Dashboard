@@ -2,7 +2,7 @@ import { Permissions, getNamedPermission } from "@utils/perms";
 import React, { useContext } from "react";
 
 import Image from "next/image";
-import { SignOut } from "./nav/SignOut";
+import { SignOut } from "./nav/SignOut.comp";
 import { SignOutIcon } from "@xiler/icon/lib/Components";
 import { UserContext } from "pages/_app";
 

@@ -1,5 +1,4 @@
 export const Documentation: React.FC = () => {
-    return <div>Docs</div>;
-  };
-  export default Documentation;
-  
+  return <div>Docs</div>;
+};
+export default Documentation;

@@ -6,7 +6,7 @@ export const LOGIN_URL = "/login";
 
 /**
  * All API endpoints must be specified here.
- * This gets used throughout the whole application. 
+ * This gets used throughout the whole application.
  */
 export enum ApiEndpoints {
   login = "/login",
