@@ -30,6 +30,7 @@ module.exports = {
         "fix-bottom": "1fr auto",
       },
       gridTemplateColumns: {
+        "fix-left": "auto 1fr",
         "fix-right": "1fr auto",
       },
       borderWidth: {

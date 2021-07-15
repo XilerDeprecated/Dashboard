@@ -42,7 +42,7 @@ export const Balance: React.FC = () => {
   return !isLoading && error !== undefined ? (
     <></>
   ) : (
-    <div className="bg-dark-500 rounded p-5 text-sm grid grid-cols-2 grid-flow-col">
+    <div className="bg-dark-500 rounded p-5 text-sm grid grid-cols-fix-right grid-flow-col gap-x-5">
       <h1 className="text-2xl">Balance</h1>
       <h3 className="text-primary-600">Account Balance</h3>
       <div className="flex">
