@@ -22,22 +22,26 @@ export const Balance: React.FC = () => {
     }
   }, [data, isLoading, error]);
 
-  // TODO: Document this
+  // When the data is being fetched or is nonexistent, we want to display loading.
   const dt =
-    data === undefined
+    isLoading || data === undefined
       ? { balance: "Loading...", consumed: "Loading..." }
       : (data as UserBalanceResponseDataType);
 
-  // TODO: Document this
+  // Simply get the percentage of the balance that has been consumed. 
   const percentage =
     isNumber(dt.balance) && isNumber(dt.consumed)
       ? Math.floor((dt.consumed / dt.balance) * 10000) / 100
       : 0;
 
-  // TODO: Document this
+  // We need to calculate an offset because 99% would fully fill the circle.
   const perWithOffset = percentage > 1 ? percentage - 0.6 : percentage;
+
+  // Convert the percentage to degree's which ade being used to calculate. the circle.
   const degree = (perWithOffset / 100) * 360;
-  const circle = (Math.PI * 2 * (360 - degree)) / 360;
+
+  // Calculate our radians which are used for the arc.
+  const radian = (Math.PI * (360 - degree)) / 180;
 
   return !isLoading && error !== undefined ? (
     <></>
@@ -67,8 +71,8 @@ export const Balance: React.FC = () => {
         <svg className="w-32 h-32 transform rotate-180 rounded-full">
           <circle
             className="fill-current text-accent-500"
-            cx={64 + 56 * Math.sin(circle)}
-            cy={64 + 56 * Math.cos(circle)}
+            cx={64 + 56 * Math.sin(radian)}
+            cy={64 + 56 * Math.cos(radian)}
             r="8"
           />
           <circle
