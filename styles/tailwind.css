@@ -23,13 +23,15 @@ body {
 }
 
 .scrollbar::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
+
 .scrollbar::-webkit-scrollbar-track {
   background: theme("colors.dark.800");
+  border-radius: 20px;
 }
+
 .scrollbar::-webkit-scrollbar-thumb {
   background-color: theme("colors.secondary.600");
   border-radius: 20px;
-  border: 3px solid theme("colors.dark.800");
 }
