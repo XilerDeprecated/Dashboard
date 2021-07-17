@@ -22,8 +22,8 @@ export const DoughnutChart: React.FC<DoughnutChartProps> = ({
   const radian = (Math.PI * (360 - degree)) / 180;
 
   return (
-    <div className="relative row-span-5 grid bg-dark-700 w-32 h-32 rounded-full">
-      <p className="text-lg self-center text-center z-50 absolute left-1/2 transform -translate-x-1/2">
+    <div className="relative grid w-32 h-32 row-span-5 rounded-full bg-dark-700">
+      <p className="absolute z-50 self-center text-lg text-center transform -translate-x-1/2 left-1/2">
         {percentage}%
       </p>
       <svg className="w-32 h-32 transform rotate-180 rounded-full">

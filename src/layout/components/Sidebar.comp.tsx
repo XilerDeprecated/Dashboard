@@ -57,7 +57,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
       } row-span-2 transition-all grid grid-rows-fix-bottom`}
     >
       <div>
-        <div className="flex justify-center align-middle py-6">
+        <div className="flex justify-center py-6 align-middle">
           <Icon
             className={`${
               isHidden ? "mr-0" : "sm:mr-4 delay-100"

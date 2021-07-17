@@ -2,13 +2,13 @@ import type {
     CustomRequestCookieType,
     ErrorType,
     UserCookieType,
-  } from "@appTypes/requests";
-  
-  import type { NextApiResponse } from "next";
-  import { MostUsedAppsDataType } from "@appTypes/apps";
-  import { accessToken } from "pages/api/login";
-  
-  const CurrentUserHandler = (
+} from "@appTypes/requests";
+
+import { MostUsedAppsDataType } from "@appTypes/apps";
+import type { NextApiResponse } from "next";
+import { accessToken } from "pages/api/login";
+
+const CurrentUserHandler = (
     req: CustomRequestCookieType<UserCookieType>,
     res: NextApiResponse<MostUsedAppsDataType | ErrorType>
   ) => {

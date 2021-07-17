@@ -35,12 +35,12 @@ export const Balance: React.FC = () => {
   return !isLoading && error !== undefined ? (
     <></>
   ) : (
-    <div className="bg-dark-500 rounded p-5 text-sm grid grid-cols-fix-right grid-flow-col gap-x-5">
+    <div className="grid grid-flow-col p-5 text-sm rounded bg-dark-500 grid-cols-fix-right gap-x-5">
       <h1 className="text-2xl">Balance</h1>
       <h3 className="text-primary-600">Account Balance</h3>
       <div className="flex">
         <CoinsIcon
-          className="fill-current text-transparent my-auto mr-1"
+          className="my-auto mr-1 text-transparent fill-current"
           size={{ width: 17, height: 15.3 }}
         />
         <p>{dt.balance.toLocaleString()}</p>
@@ -48,7 +48,7 @@ export const Balance: React.FC = () => {
       <h3 className="text-primary-600">Consumed this month</h3>
       <div className="flex">
         <CoinsIcon
-          className="fill-current text-transparent my-auto mr-1"
+          className="my-auto mr-1 text-transparent fill-current"
           size={{ width: 17, height: 15.3 }}
         />
         <p>{dt.consumed.toLocaleString()}</p>

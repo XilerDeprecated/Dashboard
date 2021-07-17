@@ -17,8 +17,8 @@ export const BannedScreen: React.FC<{ username: string }> = ({ username }) => {
           <div className="text-center">
             It seems like your account <span className="text-sm italic">({username})</span> has been banned from Xiler. If you think
             this is incorrect, please contact us at{" "}
-            <a className="font-bold hover:text-accent-500 transition-colors" href="mailto:support@xiler.net">support@xiler.net</a> or{" "}
-            <a className="font-bold hover:text-accent-500 transition-colors" href="https://dc.xiler.net">dc.xiler.net</a>.
+            <a className="font-bold transition-colors hover:text-accent-500" href="mailto:support@xiler.net">support@xiler.net</a> or{" "}
+            <a className="font-bold transition-colors hover:text-accent-500" href="https://dc.xiler.net">dc.xiler.net</a>.
           </div>
 
           <button
