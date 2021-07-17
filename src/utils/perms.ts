@@ -8,7 +8,7 @@ export enum Permissions {
   /** Represents a member, this is the standard permission level. */
   MEMBER = 0x02,
 
-  /** Represents a member of our support team, which should allow them to perfom more actions. */
+  /** Represents a member of our support team, which should allow them to perform more actions. */
   SUPPORT = MEMBER | 0x32,
 
   /** Represents a member of our moderation team, which should allow them to perform most actions. */

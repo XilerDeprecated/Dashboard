@@ -8,9 +8,13 @@ export const LOGIN_URL = "/login";
  * All API endpoints must be specified here.
  * This gets used throughout the whole application.
  */
-export enum ApiEndpoints {
-  login = "/login",
-  logout = "/logout",
-  me = "/user/@me",
-  balance = "/user/balance",
+export class ApiEndpoints {
+  public static login = "/login";
+  public static logout = "/logout";
+  public static me = "/user/@me";
+  public static balance = "/user/balance";
+  
+  public static apps = class {
+    public static mostUsed = "/user/apps/most_used"
+  }
 }

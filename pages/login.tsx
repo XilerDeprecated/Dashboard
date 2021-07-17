@@ -1,7 +1,7 @@
 import { API_BASE_URL, ApiEndpoints } from "@utils/config";
 import React, { useEffect, useState } from "react";
 
-import { ErrorType } from "@appTypes/requestTypes";
+import { ErrorType } from "@appTypes/requests";
 import Head from "next/head";
 import { Icon } from "@xiler/icon/lib/Components";
 import { SHA3 } from "sha3";

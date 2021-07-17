@@ -2,7 +2,7 @@ import type {
   CustomRequestCookieType,
   ErrorType,
   UserCookieType,
-} from "@appTypes/requestTypes";
+} from "@appTypes/requests";
 
 import type { NextApiResponse } from "next";
 import { Permissions } from "../../../src/utils/perms";

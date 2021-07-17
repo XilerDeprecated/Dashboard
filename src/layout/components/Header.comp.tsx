@@ -17,9 +17,6 @@ const NavItems = [
 export const Header: React.FC = () => {
   const user = useContext(UserContext);
 
-  const btnStyle =
-    "fill-current mr-3 text-primary-500 sm:text-primary-600 cursor-pointer hover:text-primary-500 transition-colors";
-
   return (
     <header className="grid grid-cols-fix-right bg-dark-500 m-6 py-1 px-6 rounded">
       <div className="flex h-min my-auto">
@@ -46,7 +43,7 @@ export const Header: React.FC = () => {
             {getNamedPermission(user?.permissionLevel ?? Permissions.MEMBER)}
           </h4>
         </div>
-        <div className="rounded-full bg-dark-700 h-14 w-14 relative">
+        <div className="rounded-full bg-dark-700 h-14 w-14 relative select-none">
           <Image
             className="object-cover"
             src={user?.profilePicture ?? ""}

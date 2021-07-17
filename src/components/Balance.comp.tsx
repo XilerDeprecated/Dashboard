@@ -4,7 +4,7 @@ import { ApiEndpoints } from "@utils/config";
 import { CoinsIcon } from "@xiler/icon/lib/Components";
 import { DoughnutChart } from "@components/DoughnutChart.comp";
 import { UserBalanceResponseDataType } from "@src/types/user";
-import { isError } from "@appTypes/requestTypes";
+import { isError } from "@appTypes/requests";
 import { isNumber } from "@utils/typeChecking";
 import { toast } from "react-toastify";
 import { useAPI } from "@utils/requests";

@@ -1,5 +1,5 @@
 import { API_BASE_URL, ApiEndpoints } from "./config";
-import { ErrorType, isError } from "@src/types/requestTypes";
+import { ErrorType, isError } from "@appTypes/requests";
 
 import useSWR from "swr";
 

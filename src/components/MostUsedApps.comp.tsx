@@ -1,3 +1,46 @@
+import { ApiEndpoints } from "@utils/config";
+import { MostUsedAppsDataType } from "@appTypes/apps";
+import { isError } from "@appTypes/requests";
+import { toast } from "react-toastify";
+import { useAPI } from "@utils/requests";
+import { useEffect } from "react";
+
 export const MostUsedApps: React.FC = () => {
-  return <div className="">MostUsedApps</div>;
+  const { data, isLoading, error } = useAPI<MostUsedAppsDataType>(
+    ApiEndpoints.apps.mostUsed
+  );
+
+  useEffect(() => {
+    if (!isLoading && error !== undefined) {
+      toast.error(
+        `An error occurred while trying to fetch your most used apps. Please try again later. ${
+          isError(error) ? `(${error.error})` : ""
+        }`
+      );
+    }
+  }, [data, isLoading, error]);
+
+  const apps: MostUsedAppsDataType = (data as MostUsedAppsDataType) ?? {};
+  const total = Object.values(apps).reduce((a, b) => a + b, 0);
+
+  return (
+    <div className="grid gap-5 p-5 text-sm rounded bg-dark-500">
+      <h1 className="text-2xl">Most Used Apps</h1>
+      {Object.keys(apps).map((app, idx) => (
+        <div
+          key={idx}
+          className="grid grid-flow-row text-primary-600 grid-cols-fix-right"
+        >
+          <p>{app}</p>
+          <p>{apps[app].toLocaleString()}</p>
+          <div className="relative col-span-2 pt-2 pb-1 overflow-hidden rounded-full bg-dark-700">
+            <div
+              className="absolute top-0 col-span-2 pt-2 pb-1 rounded-full bg-secondary-500 -left-1/4"
+              style={{ width: `${(apps[app] / total) * 100 + 25}%` }}
+            ></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 };

@@ -1,4 +1,4 @@
-import type { ErrorType, JsonRequest } from "@appTypes/requestTypes";
+import type { ErrorType, JsonRequest } from "@appTypes/requests";
 
 import type { NextApiResponse } from "next";
 import { serialize } from "cookie";
