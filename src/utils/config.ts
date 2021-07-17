@@ -15,6 +15,6 @@ export class ApiEndpoints {
   public static balance = "/user/balance";
   
   public static apps = class {
-    public static mostUsed = "/user/apps/most_used"
+    public static usage = "/user/apps/usage"
   }
 }
