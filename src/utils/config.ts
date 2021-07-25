@@ -13,8 +13,9 @@ export class ApiEndpoints {
   public static logout = "/logout";
   public static me = "/user/@me";
   public static balance = "/user/balance";
-  
+  public static activity = "/user/activity";
+
   public static apps = class {
-    public static usage = "/user/apps/usage"
-  }
+    public static usage = "/user/apps/usage";
+  };
 }

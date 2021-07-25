@@ -101,7 +101,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ barItems }) => {
                       isHidden
                         ? "invisible absolute opacity-0"
                         : "delay-100 opacity-100"
-                    } transition-all`}
+                    } transition-all select-none`}
                   >
                     {route.name}
                   </span>

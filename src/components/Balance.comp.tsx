@@ -36,7 +36,7 @@ export const Balance: React.FC = () => {
     <></>
   ) : (
     <div className="grid grid-flow-col p-5 text-sm rounded bg-dark-500 grid-cols-fix-right gap-x-5">
-      <h1 className="text-2xl">Balance</h1>
+      <h1 className="text-2xl select-none">Balance</h1>
       <h3 className="text-primary-600">Account Balance</h3>
       <div className="flex">
         <CoinsIcon

@@ -6,10 +6,15 @@ import { isError } from "@appTypes/requests";
 import { toast } from "react-toastify";
 import { useAPI } from "@utils/requests";
 
-// TODO: Document this
+/**
+ * The props for the most used apps component.
+ */
 type ComponentProps = {
+  /** All of the apps and their usage. */
   apps: MostUsedAppsDataType;
+  /** The sorted list of the apps. */
   appsSorted: string[];
+  /** The total amount of requests. */
   total: number;
 };
 
@@ -18,7 +23,7 @@ const Component: React.FC<ComponentProps> = ({ apps, appsSorted, total }) => {
 
   return (
     <div className="grid gap-5 p-5 text-sm rounded bg-dark-500">
-      <h1 className="text-2xl">Most Used Apps</h1>
+      <h1 className="text-2xl select-none">Most Used Apps</h1>
       {appsSorted.slice(0, showAmount).map((app, idx) => (
         <div
           key={idx}

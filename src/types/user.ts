@@ -23,3 +23,11 @@ export type UserBalanceResponseDataType = {
   /** How much they have used of their balance this month. */
   consumed: number;
 };
+
+/** Represents a response from the `GET activity` endpoint. */
+export type UserActivityDataType = {
+  /** A collection of numbers which represent the amount of requests that have been sent in the past 24 hrs. */
+  today: number[];
+  /** A collection of numbers which represent the amount of requests that have been sent in the past month. */
+  month: number[];
+};
