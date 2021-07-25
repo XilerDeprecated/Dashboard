@@ -6,6 +6,7 @@ import { isError } from "@appTypes/requests";
 import { toast } from "react-toastify";
 import { useAPI } from "@utils/requests";
 
+// TODO: Document this
 type ComponentProps = {
   apps: MostUsedAppsDataType;
   appsSorted: string[];
@@ -13,12 +14,12 @@ type ComponentProps = {
 };
 
 const Component: React.FC<ComponentProps> = ({ apps, appsSorted, total }) => {
-  const [seeAmount, setSeeAmount] = useState<number>(5);
+  const [showAmount, setShowAmount] = useState<number>(5);
 
   return (
     <div className="grid gap-5 p-5 text-sm rounded bg-dark-500">
       <h1 className="text-2xl">Most Used Apps</h1>
-      {appsSorted.slice(0, seeAmount).map((app, idx) => (
+      {appsSorted.slice(0, showAmount).map((app, idx) => (
         <div
           key={idx}
           className="grid grid-flow-row text-sm text-primary-600 grid-cols-fix-right"
@@ -33,9 +34,18 @@ const Component: React.FC<ComponentProps> = ({ apps, appsSorted, total }) => {
           </div>
         </div>
       ))}
-      {seeAmount < appsSorted.length && (
-        <button onClick={() => setSeeAmount((c) => c + 5)}>See More</button>
-      )}
+      <div className="grid grid-flow-col">
+        {showAmount < appsSorted.length && (
+          <button onClick={() => setShowAmount((c) => c + 5)}>Show More</button>
+        )}
+        {showAmount > 5 && (
+          <button
+            onClick={() => setShowAmount((c) => (c % 5 === 0 ? c - 5 : c % 5))}
+          >
+            Show Less
+          </button>
+        )}
+      </div>
     </div>
   );
 };
@@ -65,6 +75,8 @@ export const MostUsedApps: React.FC = () => {
   return appsSorted.length === 0 ? (
     <></>
   ) : (
-    <Component apps={apps} total={total} appsSorted={appsSorted} />
+    <div>
+      <Component apps={apps} total={total} appsSorted={appsSorted} />
+    </div>
   );
 };

@@ -1,37 +1,12 @@
-import React, { useEffect, useState } from "react";
-
 import { Content } from "./components/Content.comp";
 import { Header } from "./components/Header.comp";
 import { LayoutProps } from "./index.types";
+import React from "react";
 import { Sidebar } from "./components/Sidebar.comp";
-
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height,
-  };
-}
-
-export default function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return windowDimensions;
-}
+import { useWidth } from "@utils/useDimensions";
 
 export const Layout: React.FC<LayoutProps> = ({ barItems, children }) => {
-  const { width } = useWindowDimensions();
+  const width = useWidth();
 
   if (width <= 640)
     return (

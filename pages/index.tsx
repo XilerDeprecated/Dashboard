@@ -5,7 +5,7 @@ import React from "react";
 
 export const Main: React.FC = () => {
   return (
-    <div className="grid gap-6 lg:grid-cols-fix-left lg:grid-flow-col">
+    <div className="grid gap-6 lg:grid-cols-fix-left lg:grid-rows-fix-top lg:grid-flow-col">
       <Balance />
       <MostUsedApps />
       <Activity />
