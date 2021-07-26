@@ -1,16 +1,18 @@
 import { RefObject, useEffect, useState } from "react";
 
-// TODO: Document this
-// TODO: Make arrow func
-function getWindowDimensions() {
+/**
+ * Get the current window dimensions.
+ *
+ * @returns The width and height of the current browser window.
+ */
+const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height,
-  };
-}
+  return { width, height };
+};
 
-// TODO: Document this
+/**
+ * A react hook which gets triggered when the x or y axis of the browser window changes.
+ */
 export const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
@@ -28,7 +30,9 @@ export const useWindowDimensions = () => {
   return windowDimensions;
 };
 
-// TODO: Document this
+/**
+ * A react hook which gets triggered when the x axis of the browser window changes.
+ */
 export const useWidth = () => {
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -41,10 +45,12 @@ export const useWidth = () => {
   return width;
 };
 
-// TODO: Document this
+/** Property which is required on the container type. */
 type container = { width: { baseVal: { value: number } } };
 
-// TODO: Document this
+/**
+ * A react hook which gets triggered when the width of the container changes.
+ */
 export const useContainerDimensions = <T extends container>(
   myRef: RefObject<T>
 ) => {
