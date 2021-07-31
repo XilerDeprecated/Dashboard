@@ -1,6 +1,7 @@
 import { API_BASE_URL, ApiEndpoints } from "./config";
 import { ErrorType, isError } from "@appTypes/requests";
 
+import { toast } from "react-toastify";
 import useSWR from "swr";
 
 /**
@@ -11,7 +12,7 @@ import useSWR from "swr";
  * @returns The json response as an object from the request.
  */
 export const fetcher = (input: RequestInfo, init?: RequestInit | undefined) =>
-  fetch(input, { ...init, credentials: "include" }).then((res) => res.json());
+  send<any>(input, "GET", "include", init, true);
 
 /**
  * Utilize the API, this utilizes SWR. (So requests are optimized.)
@@ -25,7 +26,7 @@ export const useAPI = <Response extends object>(
   contactor: typeof fetcher = fetcher
 ) => {
   const { data, error } = useSWR<Response | ErrorType>(
-    API_BASE_URL + endpoint.valueOf(),
+    endpoint.valueOf().toString(),
     contactor
   );
 
@@ -44,10 +45,32 @@ export const useAPI = <Response extends object>(
  *
  * @returns An error if one got thrown.
  */
-export const logout = () =>
-  fetch(`${API_BASE_URL}/logout`, {
-    method: "DELETE",
-    credentials: "include",
-  }).catch((e) => e);
 
-// TODO: Make custom method for all request types and handle then properly. (fg get, post, ...)
+export const logout = () => send(ApiEndpoints.logout, "DELETE", "include");
+
+// TODO: Document this
+const send = async <T>(
+  endpoint: ApiEndpoints | string,
+  method: "GET" | "POST" | "PUT" | "DELETE",
+  credentials: RequestCredentials,
+  config?: RequestInit,
+  throw_errors?: boolean
+) => {
+  try {
+    const res = await fetch(API_BASE_URL + endpoint, {
+      method,
+      credentials,
+      ...config,
+    });
+    if (!res.ok) throw new Error(res.statusText);
+    const txt = await res.text();
+    if (txt === "") return undefined;
+    return JSON.parse(txt) as T;
+  } catch (error) {
+    if (throw_errors) throw error;
+
+    toast.error(
+      `An error occurred while sending an API request. ([${method} ${endpoint}] ${error})`
+    );
+  }
+};

@@ -9,7 +9,6 @@ export const LOGIN_URL = "/login";
  * This gets used throughout the whole application.
  */
 export class ApiEndpoints {
-  public static login = "/login";
   public static logout = "/logout";
   public static me = "/user/@me";
   public static balance = "/user/balance";

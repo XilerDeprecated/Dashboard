@@ -19,7 +19,7 @@ const UserLoginComponent: React.FC = () => {
     }
 
     const hash = new SHA3(512).update(password).digest("hex");
-    const res = await fetch(API_BASE_URL + ApiEndpoints.login, {
+    const res = await fetch(API_BASE_URL + "/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
