@@ -1,3 +1,3 @@
 # Xiler Dashboard
 
-Todo: Fix this readme.
+An old sample implementation of a dashboard for Xiler.
